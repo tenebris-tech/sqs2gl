@@ -89,7 +89,7 @@ func main() {
 		if err != nil {
 			log.Printf("Error opening queue: %s", err.Error())
 			log.Printf("Sleeping for 60 seconds...")
-			time.Sleep(5 * time.Second)
+			time.Sleep(60 * time.Second)
 		} else {
 			break
 		}
