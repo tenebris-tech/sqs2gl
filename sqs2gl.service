@@ -1,0 +1,17 @@
+#
+# Copyright 2021 Tenebris Technologies Inc.
+#
+[Unit]
+Description=SQS to Graylog
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/sqs2gl
+User=root
+Group=root
+Restart=always
+ExecStart=/opt/sqs2gl/sqs2gl /opt/sqs2gl/sqs2gl.conf
+
+[Install]
+WantedBy=multi-user.target
+Alias=sqs2gl.service
