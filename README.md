@@ -7,7 +7,7 @@ Graylog GELF HTTP listener on localhost (127.0.0.1) and install sqs2gl on the
 Graylog host. If the HTTP POST fails, the message will be left in the queue.
 
 ### Development Status
-This is a stable beta build.
+This is a beta release.
 
 ### Installation
 1) Clone the repo and compile using "go build"
