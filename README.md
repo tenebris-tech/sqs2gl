@@ -6,8 +6,12 @@ For security and reliability reasons, it is generally preferable to configure a
 Graylog GELF HTTP listener on localhost (127.0.0.1) and install sqs2gl on the
 Graylog host. If the HTTP POST fails, the message will be left in the queue.
 
+Note that if an SQS read/receive error occurs, the application will exit with a
+fatal error. Assuming the sample .service file is used, this should result in the
+service being restarted.
+
 ### Development Status
-This is a beta release.
+This is a beta release, but is currently running in production environments.
 
 ### Installation
 1) Clone the repo and compile using "go build"
