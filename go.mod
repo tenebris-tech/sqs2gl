@@ -1,5 +1,7 @@
 module sqs2gl
 
-go 1.16
+go 1.19
 
-require github.com/aws/aws-sdk-go v1.40.2
+require github.com/aws/aws-sdk-go v1.44.123
+
+require github.com/jmespath/go-jmespath v0.4.0 // indirect
