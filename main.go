@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2020-2021 Tenebris Technologies Inc.
+// Copyright (c) 2020-2023 Tenebris Technologies Inc.
 // All rights reserved
 //
 
@@ -19,7 +19,7 @@ import (
 )
 
 const ProductName = "sqs2gl"
-const ProductVersion = "0.2.1"
+const ProductVersion = "0.3.0"
 
 type cb func(msg string) bool
 
@@ -97,7 +97,7 @@ func main() {
 
 	log.Print("Queue opened, starting receive loop")
 
-	// Start the receive loop, passing gelf.Message() as callback function
+	// Start the reception loop, passing the callback function
 	err = queue.Loop(callback)
 	if err != nil {
 		log.Fatal(err.Error())

@@ -1,8 +1,8 @@
 #
-# Copyright 2021 Tenebris Technologies Inc.
+# Copyright 2021-2023 Tenebris Technologies Inc.
 #
 [Unit]
-Description=SQS to Graylog
+Description=sqs2gl
 After=network.target
 
 [Service]

@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2020-2021 Tenebris Technologies Inc.
+// Copyright (c) 2020-2023 Tenebris Technologies Inc.
 // All rights reserved
 //
 
@@ -81,8 +81,7 @@ func Load(filename string) error {
 		case "transport":
 			Transport = value
 		default:
-			tmp := fmt.Sprintf("error parsing config file: %s", line)
-			return errors.New(tmp)
+			return errors.New(fmt.Sprintf("error parsing config file: %s", line))
 		}
 	}
 	return nil

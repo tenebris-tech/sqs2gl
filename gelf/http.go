@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2020-2021 Tenebris Technologies Inc.
+// Copyright (c) 2020-2023 Tenebris Technologies Inc.
 // All rights reserved
 //
 
@@ -19,7 +19,7 @@ func HTTP(msg string) bool {
 	// Create request
 	req, err := http.NewRequest("POST", config.Graylog, bytes.NewBuffer([]byte(msg)))
 	if err != nil {
-		log.Printf("error creating http request: %v", err.Error())
+		log.Printf("error creating HTTP request: %v", err.Error())
 		return false
 	}
 
@@ -29,7 +29,7 @@ func HTTP(msg string) bool {
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
-		log.Printf("http post failed: %v", err.Error())
+		log.Printf("HTTP post failed: %v", err.Error())
 		return false
 	}
 	_ = resp.Body.Close()

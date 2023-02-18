@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2020-2021 Tenebris Technologies Inc.
+// Copyright (c) 2020-2023 Tenebris Technologies Inc.
 // All rights reserved
 //
 
@@ -50,8 +50,7 @@ func Open() error {
 	listQueuesRequest := sqs.ListQueuesInput{}
 	listQueueResults, err := q.ListQueues(&listQueuesRequest)
 	if err != nil {
-		tmp := fmt.Sprintln("error listing SQS queues: ", err.Error())
-		return errors.New(tmp)
+		return errors.New(fmt.Sprintln("error listing SQS queues: ", err.Error()))
 	}
 
 	// Search for requested queue name
@@ -63,8 +62,7 @@ func Open() error {
 	}
 
 	if qURL == "" {
-		tmp := fmt.Sprintf("unable to find SQS queue %s", config.AWSQueueName)
-		return errors.New(tmp)
+		return errors.New(fmt.Sprintf("unable to find SQS queue %s", config.AWSQueueName))
 	}
 
 	return nil

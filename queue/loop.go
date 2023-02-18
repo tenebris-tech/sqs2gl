@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2020-2021 Tenebris Technologies Inc.
+// Copyright (c) 2020-2023 Tenebris Technologies Inc.
 // All rights reserved
 //
 
@@ -8,6 +8,7 @@ package queue
 import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/sqs"
+	"time"
 )
 
 func Loop(callback func(string) bool) error {
@@ -49,6 +50,9 @@ func Loop(callback func(string) bool) error {
 				if err != nil {
 					return err
 				}
+			} else {
+				// Delay on failure
+				time.Sleep(10 * time.Second)
 			}
 		}
 	}
