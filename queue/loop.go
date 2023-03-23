@@ -6,9 +6,10 @@
 package queue
 
 import (
+	"time"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/sqs"
-	"time"
 )
 
 func Loop(callback func(string) bool) error {

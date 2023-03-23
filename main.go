@@ -19,7 +19,7 @@ import (
 )
 
 const ProductName = "sqs2gl"
-const ProductVersion = "0.3.0"
+const ProductVersion = "0.3.2"
 
 type cb func(msg string) bool
 
