@@ -31,8 +31,9 @@ func Load(filename string) error {
 		return err
 	}
 
-	//noinspection GoUnhandledErrorResult
-	defer file.Close()
+	defer func(file *os.File) {
+		_ = file.Close()
+	}(file)
 
 	lineCount := 0
 	scanner := bufio.NewScanner(file)
