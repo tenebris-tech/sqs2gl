@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2020-2023 Tenebris Technologies Inc.
+// Copyright (c) 2020-2024 Tenebris Technologies Inc.
 // All rights reserved
 //
 
@@ -19,7 +19,7 @@ import (
 )
 
 const ProductName = "sqs2gl"
-const ProductVersion = "0.3.9"
+const ProductVersion = "0.4.0"
 
 type cb func(msg string) bool
 

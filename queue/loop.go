@@ -1,34 +1,33 @@
 //
-// Copyright (c) 2020-2023 Tenebris Technologies Inc.
+// Copyright (c) 2020-2024 Tenebris Technologies Inc.
 // All rights reserved
 //
 
 package queue
 
 import (
+	"context"
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/sqs"
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/sqs"
 )
 
 func Loop(callback func(string) bool) error {
-	var err error
 	var success bool
-	var r *sqs.ReceiveMessageOutput
 	var msg string
 
 	// Set receive parameters
 	receiveParams := &sqs.ReceiveMessageInput{
-		QueueUrl:            aws.String(qURL),
-		MaxNumberOfMessages: aws.Int64(1),
-		VisibilityTimeout:   aws.Int64(900),
-		WaitTimeSeconds:     aws.Int64(15),
+		QueueUrl:            &qURL,
+		MaxNumberOfMessages: 1,
+		VisibilityTimeout:   900,
+		WaitTimeSeconds:     15,
 	}
 
 	// Loop and receive messages
 	for {
-		r, err = q.ReceiveMessage(receiveParams)
+		r, err := q.ReceiveMessage(context.TODO(), receiveParams)
 		if err != nil {
 			return err
 		}
@@ -47,13 +46,13 @@ func Loop(callback func(string) bool) error {
 					QueueUrl:      aws.String(qURL),
 					ReceiptHandle: r.Messages[0].ReceiptHandle,
 				}
-				_, err := q.DeleteMessage(deleteParams)
+				_, err := q.DeleteMessage(context.TODO(), deleteParams)
 				if err != nil {
 					return err
 				}
 			} else {
 				// Delay on failure
-				time.Sleep(10 * time.Second)
+				time.Sleep(15 * time.Second)
 			}
 		}
 	}

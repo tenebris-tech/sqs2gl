@@ -9,9 +9,14 @@ import (
 	"bytes"
 	"log"
 	"net/http"
+	"time"
 
 	"sqs2gl/config"
 )
+
+var netClient = &http.Client{
+	Timeout: time.Second * 10,
+}
 
 // HTTP sends to Graylog and return bool for success or failure
 func HTTP(msg string) bool {
@@ -26,8 +31,8 @@ func HTTP(msg string) bool {
 	// Set content type
 	req.Header.Set("Content-Type", "application/json")
 
-	client := &http.Client{}
-	resp, err := client.Do(req)
+	// Send request
+	resp, err := netClient.Do(req)
 	if err != nil {
 		log.Printf("HTTP post failed: %v", err.Error())
 		return false
