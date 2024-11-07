@@ -23,6 +23,6 @@ This is a beta release, but is currently running in production environments.
 7) Run 'systemctl start sqs2gl' to start the application
 
 ### Copyright
-Copyright (c) 2021 Tenebris Technologies Inc. All rights reserved.
+Copyright (c) 2021-2024 Tenebris Technologies Inc. All rights reserved.
 
 Please see the LICENSE file for additional information.
